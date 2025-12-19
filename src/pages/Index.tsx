@@ -20,15 +20,49 @@ const Index = () => {
     {
       id: 'track1',
       title: 'Мне п*хуй',
+      artist: 'Unloved & Литий',
       year: '2023',
       description: 'Первый совместный трек, положивший начало карьере',
+      theme: 'О свободе от чужого мнения и начале своего пути',
     },
     {
       id: 'track2',
       title: 'Звезда',
+      artist: 'Unloved & Литий',
       year: '2025',
       description: 'Хитовая песня, которая облетела весь мир',
-      image: '/placeholder.svg',
+      image: 'https://cdn.poehali.dev/files/b7c8d72ae415e0377cc552a0ba328ae0.jpg',
+      theme: 'О мечтах, которые стали реальностью под новый год',
+    },
+    {
+      id: 'track3',
+      title: 'Потерянный',
+      artist: 'Unloved',
+      year: '2024',
+      description: 'Личный трек Unloved о поиске себя',
+      image: 'https://cdn.poehali.dev/files/69cd3e03ca533873516b86406ad137bf.jpg',
+      theme: 'О внутренних демонах и борьбе с одиночеством',
+      color: 'purple',
+    },
+    {
+      id: 'track4',
+      title: 'Роза и кости',
+      artist: 'Литий',
+      year: '2024',
+      description: 'Сольный трек Литий о любви и потерях',
+      image: 'https://cdn.poehali.dev/files/9cae31e2b9e4b2b1005b70be9045e43b (1).jpg',
+      theme: 'О красоте и хрупкости чувств, жизни и смерти',
+      color: 'blue',
+    },
+    {
+      id: 'track5',
+      title: 'Трон',
+      artist: 'Unloved',
+      year: '2025',
+      description: 'Трек о достижении вершины',
+      image: 'https://cdn.poehali.dev/files/3271492cea1734505ab48c39543cd13a (1).jpg',
+      theme: 'О власти, успехе и цене славы',
+      color: 'purple',
     },
   ];
 
@@ -43,9 +77,9 @@ const Index = () => {
             <div className="text-4xl md:text-5xl font-black tracking-wider neon-text-green mb-4">
               ГРИН
             </div>
-            <h1 className="text-7xl md:text-9xl font-black tracking-tighter">
+            <h1 className="text-6xl md:text-8xl font-black tracking-tighter">
               <span className="neon-text-purple">UNLOVED</span>
-              <span className="text-white mx-4">&</span>
+              <span className="text-white mx-2">И</span>
               <span className="neon-text-blue">ЛИТИЙ</span>
             </h1>
             <p className="text-2xl md:text-3xl text-gray-400 font-light">
@@ -204,41 +238,74 @@ const Index = () => {
             <span className="neon-text-purple">ТРЕКИ</span>
           </h2>
 
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
             {tracks.map((track) => (
-              <Card key={track.id} className="bg-[#111] border-[#8844ff] p-6 hover:scale-105 transition-all duration-300">
-                <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
-                  <div className="flex-1 space-y-2">
-                    <h3 className="text-3xl font-bold">{track.title}</h3>
-                    <p className="text-gray-400 text-sm">{track.year} • {track.description}</p>
+              <Card 
+                key={track.id} 
+                className={`bg-[#111] ${
+                  track.color === 'purple' ? 'border-[#8844ff]' : 
+                  track.color === 'blue' ? 'border-[#44aaff]' : 
+                  'border-[#10aa60]'
+                } p-0 hover:scale-105 transition-all duration-300 overflow-hidden`}
+              >
+                {track.image && (
+                  <div className="aspect-square overflow-hidden">
+                    <img 
+                      src={track.image} 
+                      alt={track.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                
+                <div className="p-6 space-y-4">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <h3 className={`text-2xl font-bold ${
+                        track.color === 'purple' ? 'neon-text-purple' : 
+                        track.color === 'blue' ? 'neon-text-blue' : 
+                        'neon-text-green'
+                      }`}>
+                        {track.title}
+                      </h3>
+                      <span className="text-sm text-gray-500">{track.year}</span>
+                    </div>
+                    <p className="text-sm text-gray-400">{track.artist}</p>
+                    <p className="text-xs text-gray-500">{track.theme}</p>
                   </div>
                   
                   <Button
-                    size="lg"
+                    size="sm"
                     onClick={() => setPlayingTrack(playingTrack === track.id ? null : track.id)}
-                    className={`${
+                    className={`w-full ${
                       playingTrack === track.id 
                         ? 'bg-[#44aaff] hover:bg-[#3399ee]' 
-                        : 'bg-[#8844ff] hover:bg-[#7733ee]'
+                        : track.color === 'purple' ? 'bg-[#8844ff] hover:bg-[#7733ee]' :
+                          track.color === 'blue' ? 'bg-[#44aaff] hover:bg-[#3399ee]' :
+                          'bg-[#10aa60] hover:bg-[#0d8850]'
                     } text-white font-bold`}
                   >
-                    <Icon name={playingTrack === track.id ? 'Pause' : 'Play'} size={20} className="mr-2" />
+                    <Icon name={playingTrack === track.id ? 'Pause' : 'Play'} size={16} className="mr-2" />
                     {playingTrack === track.id ? 'Пауза' : 'Слушать'}
                   </Button>
-                </div>
 
-                {playingTrack === track.id && (
-                  <div className="mt-6 p-4 bg-black/50 rounded-lg animate-fade-in">
-                    <div className="flex items-center gap-4">
-                      <div className="flex-1">
-                        <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-[#8844ff] to-[#44aaff] w-1/3 animate-pulse"></div>
+                  {playingTrack === track.id && (
+                    <div className="p-3 bg-black/50 rounded-lg animate-fade-in">
+                      <div className="flex items-center gap-3">
+                        <div className="flex-1">
+                          <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                            <div className={`h-full w-1/3 animate-pulse ${
+                              track.color === 'purple' ? 'bg-gradient-to-r from-[#8844ff] to-[#aa66ff]' :
+                              track.color === 'blue' ? 'bg-gradient-to-r from-[#44aaff] to-[#66ccff]' :
+                              'bg-gradient-to-r from-[#8844ff] to-[#44aaff]'
+                            }`}></div>
+                          </div>
                         </div>
+                        <span className="text-xs text-gray-400">1:23 / 3:45</span>
                       </div>
-                      <span className="text-sm text-gray-400">1:23 / 3:45</span>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </Card>
             ))}
           </div>
