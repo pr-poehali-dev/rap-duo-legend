@@ -365,8 +365,12 @@ const Index = () => {
 
           <div className="max-w-6xl mx-auto space-y-8">
             <Card className="bg-[#111] border-[#10aa60] p-4 overflow-hidden">
-              <div className="aspect-video bg-gradient-to-br from-[#8844ff] via-[#10aa60] to-[#44aaff] rounded-xl flex items-center justify-center">
-                <Icon name="Users" size={64} className="text-white/30" />
+              <div className="aspect-video rounded-xl overflow-hidden">
+                <img 
+                  src="https://cdn.poehali.dev/files/IMG_20251219_184629_764.jpg" 
+                  alt="Unloved & Литий"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <p className="text-center text-gray-400 mt-4">Unloved & Литий вместе</p>
             </Card>
