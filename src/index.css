@@ -15,16 +15,16 @@
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 160 100% 50%;
+    --primary: 270 100% 60%;
     --primary-foreground: 0 0% 4%;
 
-    --secondary: 300 100% 50%;
+    --secondary: 210 100% 55%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 190 100% 50%;
+    --accent: 160 100% 45%;
     --accent-foreground: 0 0% 4%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,13 +32,13 @@
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 160 100% 50%;
+    --ring: 270 100% 60%;
 
     --radius: 0.5rem;
 
-    --neon-green: 160 100% 50%;
-    --neon-pink: 300 100% 50%;
-    --neon-blue: 190 100% 50%;
+    --neon-green: 160 100% 45%;
+    --neon-purple: 270 100% 60%;
+    --neon-blue: 210 100% 55%;
   }
 }
 
@@ -71,12 +71,12 @@
       0 0 30px hsl(var(--neon-green));
   }
 
-  .neon-text-pink {
-    color: hsl(var(--neon-pink));
+  .neon-text-purple {
+    color: hsl(var(--neon-purple));
     text-shadow:
-      0 0 10px hsl(var(--neon-pink)),
-      0 0 20px hsl(var(--neon-pink)),
-      0 0 30px hsl(var(--neon-pink));
+      0 0 10px hsl(var(--neon-purple)),
+      0 0 20px hsl(var(--neon-purple)),
+      0 0 30px hsl(var(--neon-purple));
   }
 
   .neon-text-blue {
@@ -87,11 +87,25 @@
       0 0 30px hsl(var(--neon-blue));
   }
 
-  .neon-border {
+  .neon-border-green {
     border: 2px solid hsl(var(--neon-green));
     box-shadow:
       0 0 10px hsl(var(--neon-green)),
       inset 0 0 10px hsl(var(--neon-green));
+  }
+
+  .neon-border-purple {
+    border: 2px solid hsl(var(--neon-purple));
+    box-shadow:
+      0 0 10px hsl(var(--neon-purple)),
+      inset 0 0 10px hsl(var(--neon-purple));
+  }
+
+  .neon-border-blue {
+    border: 2px solid hsl(var(--neon-blue));
+    box-shadow:
+      0 0 10px hsl(var(--neon-blue)),
+      inset 0 0 10px hsl(var(--neon-blue));
   }
 
   .glass-card {
